@@ -7,11 +7,11 @@ export async function main(ns) {
 
 	function openPorts(server) {
 		const ports = new Map([
-			["BruteSSH", ns.brutessh],
-			["FTPCrack", ns.ftpcrack],
-			["relaySMTP", ns.relaysmtp],
-			["HTTPWorm", ns.httpworm],
-			["SQLInject", ns.sqlinject],
+			["brutessh", ns.brutessh],
+			["ftpcrack", ns.ftpcrack],
+			["relaysmtp", ns.relaysmtp],
+			["httpworm", ns.httpworm],
+			["sqlinject", ns.sqlinject],
 		]);
 		for (const [file, cmd] of ports) {
 			if (ns.fileExists(`${file}.exe`)) {
@@ -22,7 +22,7 @@ export async function main(ns) {
 	}
 	function nuke(server) {
 		const _server = ns.getServer(server);
-		if (!ns.fileExists("NUKE.exe")) {
+		if (ns.fileExists("nuke.exe") === false) {
 			return false;
 		}
 		if (_server.openPortCount < _server.numOpenPortsRequired) {
