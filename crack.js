@@ -16,4 +16,9 @@ export async function main(ns) {
 		}
 		return ns.getServer(server).numPortsOpen;
 	}
+	function nuke(server) {
+		const _server = server;
+		if (_server.numPortsOpen >= _server.numPortsRequired) {
+		}
+	}
 }
