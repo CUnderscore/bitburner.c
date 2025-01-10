@@ -22,7 +22,7 @@ export async function main(ns) {
 	}
 	function nuke(server) {
 		const _server = ns.getServer(server);
-		if (ns.fileExists("nuke.exe") === false) {
+		if (!ns.fileExists("nuke.exe")) {
 			return false;
 		}
 		if (_server.openPortCount < _server.numOpenPortsRequired) {
