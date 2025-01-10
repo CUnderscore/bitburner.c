@@ -3,7 +3,7 @@
 export async function main(ns) {
 	await ns.wget(
 		"https://api.github.com/repos/CUnderscore/bitburner.c/git/trees/main",
-		"gitMain.js",
+		"repo",
 		"home",
 	);
 	const filter = new RegExp(/\w+.js/g);
