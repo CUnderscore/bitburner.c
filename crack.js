@@ -22,10 +22,13 @@ export async function main(ns) {
 	}
 	function nuke(server) {
 		const _server = ns.getServer(server);
-		if (_server.openPortCount >= _server.numOpenPortsRequired) {
-			ns.nuke(_server.name);
-			return true;
+		if (ns.fileExists("NUKE.exe")) {
+			return false;
 		}
-		return false;
+		if (_server.openPortCount <= _server.numOpenPortsRequired) {
+			return false;
+		}
+		ns.nuke(_server.hostname);
+		return true;
 	}
 }

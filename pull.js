@@ -13,4 +13,5 @@ export async function main(ns) {
 	for (const file of repo) {
 		await ns.wget(`${gitPath}main/${file}`, file, "home");
 	}
+	ns.tprintf(`pulled ${repo.length} files`);
 }
