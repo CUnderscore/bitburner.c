@@ -3,16 +3,14 @@
 export async function main(ns) {
 	await ns.wget(
 		"https://api.github.com/repos/CUnderscore/bitburner.c/git/trees/main",
-		"repo",
+		"repo.txt",
 		"home",
 	);
 	const filter = new RegExp(/\w+.js/g);
-	const toPull = ns.read("gitMain.js").match(filter);
-	for (const file of toPull) {
-		await ns.wget(
-			`https://raw.githubusercontent.com/CUnderscore/bitburner.c/refs/heads/main/${file}`,
-			file,
-			"home",
-		);
+	const repo = ns.read("repo.txt").match(filter);
+	const gitPath =
+		"https://raw.githubusercontent.com/CUnderscore/bitburner.c/refs/heads/";
+	for (const file of repo) {
+		await ns.wget(`${gitPath}main/${file}`, file, "home");
 	}
 }
