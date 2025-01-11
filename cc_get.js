@@ -1,6 +1,6 @@
-import scan from "./search.js";
+import { getServers } from "./scan";
 /** @param {NS} ns */
 
 export async function main(ns) {
-	const servers = scan(ns, ns.getHostname());
+	const servers = getServers(ns, "serverlist.txt");
 }
