@@ -1,11 +1,14 @@
-import { getServers } from "./scan";
-/** @param {NS} ns */
+("use strict");
 
-export async function main(ns) {
-    const servers = getServers(ns, "serverlist.txt");
+/* DATABASE:
+ * solver names input manually
+ */
+export function database() {
+    return ["Encryption I: Caesar Cipher"];
 }
 
-function caesarCipher(problem) {
+/* Encryption I: Caesar Cipher */
+export function caesarCipher(problem) {
     const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     let solution = "";
     for (const ch of problem[0]) {
@@ -22,10 +25,10 @@ function caesarCipher(problem) {
     }
 
     function shiftLetter(letter, shift) {
-        const position = alphabet.indexOf(letter) - shift;
-        if (position < 0) {
-            return alphabet.charAt(alphabet.length + position);
+        const newPos = alphabet.indexOf(letter) - shift;
+        if (newPos < 0) {
+            return alphabet.charAt(alphabet.length + newPos);
         }
-        return alphabet.charAt(position);
+        return alphabet.charAt(newPos);
     }
 }
