@@ -1,6 +1,7 @@
 ("use strict");
-
 import { getServers } from "./scan";
+import * as solver from "./cct_solver";
+
 /** @param {NS} ns */
 
 /* TODO:
@@ -22,15 +23,18 @@ export async function main(ns) {
         for (const cct of contracts) {
             if (hasSolver(cct, server)) {
                 const data = ns.codingcontract.getData(cct, server);
+                // this is wrong ↓ lol fix it later
                 if (ns.codingcontract.attempt(data, cct, server)) {
                     track++;
                 }
             }
         }
     }
+    ns.tprintf(`solved ${track} contracts`);
 
-    function hasSolver() {
-        return;
+    function hasSolver(contract, host) {
+        const type = ns.codingcontracts.getContractType(contract, host);
+        return solver.database().includes(type);
     }
 }
 
